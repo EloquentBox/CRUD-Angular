@@ -116,9 +116,12 @@
       <button type="submit" class="btn btn-primary" [disabled]="employeeForm.invalid">Save</button>
     </div>
 
+    <div ngModelGroup="passwordGroup" [class.has-error]="confirmPassword.touched && confirmPassword.invalid && !confirmPassword.errors?.required">
     <div class="form-group" [class.has-error]="password.invalid && password.touched">
       <label for="password" class="control-label">Password</label>
-      <input required id="password" name="password" type="text" class="form-control" [(ngModel)]="employee.password" #password="ngModel">
+      <input required id="password" name="password" type="text" class="form-control"
+             (input)="confirmPassword.control.updateValueAndValidity()"
+             [(ngModel)]="employee.password" #password="ngModel">
       <span class="help-block" *ngIf="password.touched && password.errors?.required">
         Password is required
       </span>
@@ -133,7 +136,7 @@
         Password and Confirm Password does not match
       </span>
     </div>
-
+    </div>
   </div>
 
 </form>
