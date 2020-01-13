@@ -1,0 +1,9 @@
+<h1 *ngIf="dataFromChild">
+  {{ dataFromChild?.name + ' ' + dataFromChild?.gender}}
+</h1>
+<div *ngFor="let employee of employees">
+<app-display-employee [employee]="employee" (notify)="handleNofity($event)"></app-display-employee>
+
+</div>
+
+
