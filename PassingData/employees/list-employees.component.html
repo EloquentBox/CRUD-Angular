@@ -1,0 +1,12 @@
+<div class="card-group">
+  <input type="text" class="card-control" placeholder="Search By Name" [(ngModel)]="searchTerm">
+</div>
+
+<h1 *ngIf="dataFromChild">
+  {{ dataFromChild?.name + ' ' + dataFromChild?.gender}}
+</h1>
+<div *ngFor="let employee of employees | employeeFilter:searchTerm">
+<app-display-employee [employee]="employee" (notify)="handleNofity($event)" [searchTerm]="searchTerm"></app-display-employee>
+  </div>
+
+
